@@ -1,0 +1,29 @@
+<div>
+	<% if (typeof error != "undefined" && error) { %>
+	<div class="mt-5 mb-3">
+		<div
+			class="alert alert-danger alert-dismissible fade show"
+			role="alert"
+			id="alert"
+		>
+			<div>
+				<i class="bi bi-exclamation-circle-fill"></i>
+				<strong><%= error %></strong>
+			</div>
+
+			<button
+				type="button"
+				class="btn-close"
+				data-bs-dismiss="alert"
+				aria-label="Close"
+			></button>
+		</div>
+	</div>
+	<% } %>
+</div>
+<script type="text/javascript">
+	setTimeout(function () {
+		// Closing the alert
+		$('#alert').alert('close');
+	}, 3000);
+</script>

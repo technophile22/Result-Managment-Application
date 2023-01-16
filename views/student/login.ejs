@@ -1,0 +1,37 @@
+<div class="container-fluid">
+	<a href="/" class="btn btn-outline-secondary" id="backButton">Back</a>
+	<h3>Student Login</h3>
+	<div class="formDiv">
+		<form method="POST" class="login-form" action="/student/viewRecord">
+			<div class="mb-3">
+				<label for="rollNumber" class="form-label">Roll Number : </label>
+				<input
+					type="number"
+					name="rollNumber"
+					class="form-control"
+					id="rollNumber"
+					required="required"
+				/>
+			</div>
+			<div class="mb-3">
+				<label for="dob" class="form-label">Date of Birth : </label>
+				<input
+					type="date"
+					name="dob"
+					class="form-control"
+					id="dob"
+					required="required"
+				/>
+			</div>
+			<div style="margin-top: 20px">
+				<a
+					><button type="submit" class="btn btn-outline-primary">
+						Submit
+					</button></a
+				>
+				<a><button type="reset" class="btn btn-outline-dark">Clear</button></a>
+			</div>
+		</form>
+	</div>
+	<%- include("../partials/error.ejs") %>
+</div>

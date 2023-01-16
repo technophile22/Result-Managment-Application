@@ -1,0 +1,31 @@
+<div class="container-fluid">
+	<a href="/student/login" class="btn btn-outline-secondary" id="backButton"
+		>Back</a
+	>
+
+	<h4>
+		<% if(typeof student !== 'undefined' && student.name) { %>
+		<div>Viewing Result for Student : <%= student.name %></div>
+	</h4>
+	<div class="table-responsive-sm">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Roll no.</th>
+					<th scope="col">Name</th>
+					<th scope="col">Date of birth</th>
+					<th scope="col">Score</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><%= student.rollNumber %></td>
+					<td><%= student.name %></td>
+					<td><%= student.dob.toLocaleDateString() %></td>
+					<td><%= student.score %></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<% } %> <%- include("../partials/error.ejs") %>
+</div>

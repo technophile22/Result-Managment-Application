@@ -1,0 +1,38 @@
+<div class="container-fluid">
+	<a href="/" class="btn btn-outline-secondary" id="backButton">Back</a>
+	<h3>Teacher Login</h3>
+	<div class="formDiv">
+		<form method="POST" class="login-form">
+			<div class="mb-3">
+				<label for="email" class="form-label">Email : </label>
+				<input
+					type="email"
+					name="email"
+					class="form-control"
+					id="email"
+					required
+				/>
+			</div>
+			<div class="mb-3">
+				<label for="password" class="form-label">Password : </label>
+				<input
+					type="password"
+					name="password"
+					class="form-control"
+					id="password"
+					required
+				/>
+			</div>
+			<div style="margin-top: 20px">
+				<a
+					><button type="submit" class="btn btn-outline-primary">
+						Submit
+					</button></a
+				>
+				<a><button type="reset" class="btn btn-outline-dark">Clear</button></a>
+			</div>
+		</form>
+	</div>
+
+	<%- include("../partials/error.ejs") %>
+</div>
