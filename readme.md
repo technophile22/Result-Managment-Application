@@ -34,7 +34,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### .env file
 
 ```
-MONGODB_URI=mongodb+srv://test:test@resultmanagement/ResultManagement?retryWrites=true&w=majority
+MONGODB_URI=<YOUR_MONGO_DB_CONNECTION_STRING>
 PORT=3000
 ```
 
