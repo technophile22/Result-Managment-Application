@@ -53,7 +53,7 @@ password = admin
 
 ## Author
 
-- [Raghav Mangal](https://github.com/%3Ctechnophile22%3E)
+- [Raghav Mangal](https://github.com/technophile22)
 
 ## Acknowledgements
 
