@@ -9,8 +9,8 @@ getStudentLogin = async (req, res) => {
 };
 
 /*
- * @route - GET student/score
- * @description - get student score
+ * @route - GET student/viewRecord
+ * @description - render student score
  */
 getStudentScore = async (req, res) => {
 	try {

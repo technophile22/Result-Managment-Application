@@ -1,9 +1,18 @@
 const Student = require('../models/student');
+const constants = require('../constants/constants');
 
+/*
+ * @route - GET teacher/login
+ * @description - render teacher login
+ */
 getTeacherLogin = (req, res) => {
 	res.render('teacher/login');
 };
 
+/*
+ * @route - POST teacher/login
+ * @description - teacher login
+ */
 postTeacherLogin = (req, res) => {
 	const body = req.body;
 	const { email, password } = body;
@@ -13,7 +22,10 @@ postTeacherLogin = (req, res) => {
 			error: 'Invalid Request. Please try again!',
 		});
 	}
-	if (email !== 'admin@email.com' || password !== 'admin') {
+	if (
+		email !== constants.TEACHER_LOGIN_EMAIL ||
+		password !== constants.TEACHER_LOGIN_PASSWORD
+	) {
 		// send error message
 		res.render('teacher/login', {
 			error: 'Incorrect email or password. Please try again!',
@@ -22,11 +34,19 @@ postTeacherLogin = (req, res) => {
 	res.redirect('/teacher/viewRecords');
 };
 
+/*
+ * @route - GET teacher/viewRecords
+ * @description - render all records
+ */
 getAllRecords = async (req, res) => {
 	const students = await Student.find();
 	res.render('teacher/viewRecords', { students: students });
 };
 
+/*
+ * @route - GET teacher/editRecord/:id
+ * @description - render edit record screen
+ */
 getEditRecord = async (req, res) => {
 	try {
 		const id = req.params.id;
@@ -44,6 +64,10 @@ getEditRecord = async (req, res) => {
 	}
 };
 
+/*
+ * @route - POST teacher/editRecord/:id
+ * @description - edit student record
+ */
 postEditRecord = async (req, res) => {
 	try {
 		const id = req.params.id;
@@ -59,7 +83,7 @@ postEditRecord = async (req, res) => {
 		const student = await Student.findByIdAndUpdate(id, body);
 		console.log('student', student);
 		if (!student) {
-			//bad request
+			//not found error
 			console.log('inside');
 			return res.render('teacher/editRecord', {
 				error: 'Record not found. Please try again!',
@@ -68,9 +92,16 @@ postEditRecord = async (req, res) => {
 		res.redirect('/teacher/viewRecords');
 	} catch (error) {
 		//error
+		return res.render('teacher/editRecord', {
+			error: 'Server Error. Please try again!',
+		});
 	}
 };
 
+/*
+ * @route - GET teacher/deleteRecord/:id
+ * @description - delete student record
+ */
 getDeleteRecord = async (req, res) => {
 	try {
 		console.log('inside get delete');
@@ -87,16 +118,19 @@ getDeleteRecord = async (req, res) => {
 	}
 };
 
+/*
+ * @route - GET teacher/addRecord
+ * @description - render add record screen
+ */
 getAddRecord = (req, res) => {
 	res.render('teacher/addRecord');
 };
 
 /*
- * @route - GET student/
- * @description - get student login
+ * @route - POST teacher/addRecord
+ * @description - add student record
  */
 postAddRecord = async (req, res) => {
-	// put auth middleware
 	try {
 		const body = req.body;
 		const { name, rollNumber, dob, score } = body;
